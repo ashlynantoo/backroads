@@ -1,0 +1,616 @@
+/*
+=============== 
+Variables
+===============
+*/
+:root {
+  /* dark shades of primary color*/
+  --clr-primary-1: hsl(184, 91%, 17%);
+  --clr-primary-2: hsl(185, 84%, 25%);
+  --clr-primary-3: hsl(185, 81%, 29%);
+  --clr-primary-4: hsl(184, 77%, 34%);
+  /* primary color */
+  --clr-primary-5: hsl(185, 62%, 45%);
+  /* lighter shades of primary color */
+  --clr-primary-6: hsl(185, 57%, 50%);
+  --clr-primary-7: hsl(184, 65%, 59%);
+  --clr-primary-8: hsl(184, 80%, 74%);
+  --clr-primary-9: hsl(185, 94%, 87%);
+  --clr-primary-10: hsl(186, 100%, 94%);
+  /* darkest grey - used for headings */
+  --clr-grey-1: hsl(209, 61%, 16%);
+  --clr-grey-2: hsl(211, 39%, 23%);
+  --clr-grey-3: hsl(209, 34%, 30%);
+  --clr-grey-4: hsl(209, 28%, 39%);
+  /* grey used for paragraphs */
+  --clr-grey-5: hsl(210, 22%, 49%);
+  --clr-grey-6: hsl(209, 23%, 60%);
+  --clr-grey-7: hsl(211, 27%, 70%);
+  --clr-grey-8: hsl(210, 31%, 80%);
+  --clr-grey-9: hsl(212, 33%, 89%);
+  --clr-grey-10: hsl(210, 36%, 96%);
+  --clr-white: #fff;
+  --ff-primary: "Lato", sans-serif;
+  --transition: all 0.3s linear;
+  --spacing: 0.25rem;
+  --radius: 0.5rem;
+  --max-width: 1170px;
+  --light-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  --dark-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/*
+=============== 
+Global Styles
+===============
+*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  background: var(--clr-white);
+  color: var(--clr-grey-1);
+  line-height: 1.5;
+  font-size: 1rem;
+}
+
+ul {
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+img:not(.nav-logo) {
+  width: 100%;
+  display: block;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  letter-spacing: var(--spacing);
+  text-transform: capitalize;
+  line-height: 1.25;
+  margin-bottom: 0.75rem;
+}
+
+h1 {
+  font-size: 2.5rem;
+}
+
+h2 {
+  font-size: 2rem;
+}
+
+h3 {
+  font-size: 1.25rem;
+}
+
+h4 {
+  font-size: 1rem;
+}
+
+p {
+  margin-bottom: 1.25rem;
+  color: var(--clr-grey-5);
+}
+
+@media screen and (min-width: 800px) {
+  h1 {
+    font-size: 4rem;
+  }
+
+  h2 {
+    font-size: 2.5rem;
+  }
+
+  h3 {
+    font-size: 1.75rem;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    line-height: 1;
+  }
+}
+
+/*
+=============== 
+Navbar
+===============
+*/
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: var(--clr-white);
+  box-shadow: var(--dark-shadow);
+  z-index: 3;
+  padding: 0.75rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-center {
+  width: 90vw;
+  max-width: var(--max-width);
+}
+
+.nav-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-icons {
+  display: none;
+}
+
+.nav-toggle {
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: 1.25rem;
+  color: var(--clr-primary-5);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.nav-toggle:hover {
+  transform: scale(1.25);
+}
+
+.links-container {
+  height: 0;
+  overflow: hidden;
+  transition: var(--transition);
+}
+
+.links a {
+  color: var(--clr-grey-1);
+  font-size: 1rem;
+  text-transform: capitalize;
+  letter-spacing: var(--spacing);
+  display: block;
+  padding: 0.5rem 0;
+  transition: var(--transition);
+}
+
+.links a:hover {
+  background-color: var(--clr-primary-5);
+  color: var(--clr-white);
+  padding-left: 0.5rem;
+}
+
+@media screen and (min-width: 375px) {
+  .nav-icons {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .nav-icon {
+    color: var(--clr-primary-5);
+    font-size: 1.25rem;
+    transition: var(--transition);
+  }
+
+  .nav-icon:hover {
+    color: var(--clr-primary-7);
+  }
+}
+
+@media screen and (min-width: 800px) {
+  .nav-center {
+    width: 95vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .nav-header {
+    gap: 2.5rem;
+  }
+
+  .nav-toggle {
+    display: none;
+  }
+
+  .links-container {
+    height: auto !important;
+  }
+
+  .links {
+    display: flex;
+  }
+
+  .links a {
+    padding: 0.5rem 1rem;
+  }
+
+  .links a:hover {
+    padding: 0.5rem 1rem;
+  }
+}
+
+/*
+=============== 
+Hero
+===============
+*/
+
+.hero {
+  min-height: 100vh;
+  background-color: var(--clr-primary-5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-banner {
+  color: var(--clr-white);
+  text-align: center;
+  width: 90vw;
+}
+
+.hero-banner h1 {
+  text-transform: uppercase;
+}
+
+.hero-banner p {
+  max-width: 35rem;
+  color: var(--clr-white);
+  letter-spacing: var(--spacing);
+  margin: 0 auto;
+  margin-bottom: 1rem;
+}
+
+.hero-btn {
+  background-color: var(--clr-white);
+  color: var(--clr-primary-5);
+  display: inline-block;
+  font-size: 1.2rem;
+  letter-spacing: var(--spacing);
+  padding: 0.5rem 1rem;
+  text-transform: uppercase;
+  transition: var(--transition);
+  cursor: pointer;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  border: 2px solid transparent;
+}
+
+.hero-btn:hover {
+  background: transparent;
+  color: var(--clr-white);
+  border: 2px solid var(--clr-white);
+}
+
+@media screen and (min-width: 768px) {
+  .hero {
+    background: linear-gradient(rgb(44, 174, 186, 0.7), rgba(0, 0, 0, 0.7)),
+      url("./images/main.jpeg") center/cover no-repeat;
+  }
+
+  .hero-banner p {
+    max-width: 45rem;
+  }
+}
+
+/* section - About, Services, Tours */
+.section {
+  padding: 3rem 0;
+  scroll-margin-top: 2rem;
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.section-title h2 {
+  text-transform: uppercase;
+}
+
+.section-title span {
+  color: var(--clr-primary-5);
+}
+
+.section-center {
+  width: 90vw;
+  margin: 0 auto;
+  max-width: var(--max-width);
+}
+
+@media screen and (min-width: 800px) {
+  .section {
+    padding: 5rem 0;
+    scroll-margin-top: 4rem;
+  }
+
+  .section-title {
+    margin-bottom: 4rem;
+  }
+
+  .section-center {
+    width: 95vw;
+  }
+}
+
+/*
+=============== 
+About
+===============
+*/
+.about-img {
+  margin-bottom: 2rem;
+}
+
+.about-info p {
+  text-align: justify;
+}
+
+.btn {
+  background-color: var(--clr-primary-5);
+  color: var(--clr-white);
+  display: inline-block;
+  font-size: 0.875rem;
+  padding: 0.5rem 0.75rem;
+  letter-spacing: var(--spacing);
+  text-transform: uppercase;
+  transition: var(--transition);
+  border: 2px solid transparent;
+  cursor: pointer;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.btn:hover {
+  background-color: var(--clr-white);
+  color: var(--clr-primary-5);
+  border-color: var(--clr-primary-5);
+}
+
+@media screen and (min-width: 768px) {
+  .about-center {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 2rem;
+    align-items: center;
+  }
+
+  .about-img {
+    margin-bottom: 0;
+  }
+}
+
+@media screen and (min-width: 1170px) {
+  .about-img {
+    position: relative;
+    margin-left: 1.5rem;
+    margin-top: 1.5rem;
+  }
+
+  .about-photo {
+    position: relative;
+  }
+
+  .about-img::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: -1.5rem;
+    left: -1.5rem;
+    border: 0.5rem solid var(--clr-primary-5);
+    box-sizing: border-box;
+  }
+}
+
+/*
+=============== 
+Services
+===============
+*/
+.services {
+  background: var(--clr-primary-10);
+}
+
+.service {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.service-icon {
+  background-color: var(--clr-primary-5);
+  color: var(--clr-grey-1);
+  display: inline-block;
+  padding: 0.5rem;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.service-text {
+  max-width: 20rem;
+  margin: 0 auto;
+}
+
+@media screen and (min-width: 576px) {
+  .services-center {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+
+  .service {
+    margin-bottom: 0rem;
+  }
+}
+
+@media screen and (min-width: 800px) {
+  .services-center {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+@media screen and (min-width: 1170px) {
+  .service {
+    display: flex;
+    align-items: center;
+    text-align: left;
+    gap: 1rem;
+  }
+
+  .service-icon {
+    margin-bottom: 0;
+  }
+}
+
+/*
+=============== 
+Tours
+===============
+*/
+.tour-card {
+  background-color: var(--clr-primary-10);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  margin-bottom: 2rem;
+  transition: var(--transition);
+}
+
+.tour-card:hover {
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  transform: scale(1.01);
+}
+
+.tour-img-container {
+  position: relative;
+}
+
+.tour-date {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  background-color: var(--clr-primary-5);
+  color: var(--clr-white);
+  letter-spacing: 0.1rem;
+  text-transform: capitalize;
+  padding: 0.25rem 0.5rem;
+  margin-bottom: 0;
+}
+
+.tour-info {
+  padding: 1.25rem 1.5rem;
+}
+
+.tour-title {
+  text-align: center;
+}
+
+.tour-desc {
+  text-align: justify;
+  margin-bottom: 0.75rem;
+}
+
+.tour-title h4 {
+  margin-bottom: 0.75rem;
+}
+
+.tour-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tour-footer p {
+  color: var(--clr-primary-5);
+  margin-bottom: 0;
+  text-transform: capitalize;
+}
+
+.tour-footer p span {
+  margin-right: 0.25rem;
+}
+
+@media screen and (min-width: 768px) {
+  .featured-center {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+
+  .tour-card {
+    margin-bottom: 0;
+  }
+}
+
+@media screen and (min-width: 1170px) {
+  .featured-center {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+/*
+=============== 
+Footer
+===============
+*/
+.footer {
+  background-color: var(--clr-grey-1);
+  padding: 2rem 0;
+  text-align: center;
+}
+
+.footer-content {
+  width: 90vw;
+  margin: 0 auto;
+}
+
+.footer-links,
+.footer-icons {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1.05rem;
+  margin-bottom: 1rem;
+}
+
+.footer-links a,
+.footer-icons a {
+  color: var(--clr-primary-5);
+  letter-spacing: var(--spacing);
+  text-transform: capitalize;
+  transition: var(--transition);
+}
+
+.footer-links a:hover,
+.footer-icons a:hover {
+  color: var(--clr-white);
+}
+
+.copyright {
+  text-transform: capitalize;
+  letter-spacing: 0.15rem;
+  color: var(--clr-white);
+}
+
+.copyright span {
+  margin-left: 0.5rem;
+}
