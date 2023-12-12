@@ -1,7 +1,13 @@
 ## Backroads Travel & Tours Company
 
-[Working Application - Deployed](https://ashlynz-backroads.netlify.app/)
+A website developed for a travel & tours company using react.
 
-- navigate to the folder
-- run 'npm install'
-- once the dependencies are installed run 'npm start'
+Demo - [Backroads Travel & Tours Company](https://ashlynz-backroads.netlify.app/)
+
+#### Steps
+
+```sh
+npm install && npm start
+```
+
+- visit url http://localhost:3000
